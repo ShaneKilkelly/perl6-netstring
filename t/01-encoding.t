@@ -1,6 +1,6 @@
 use v6;
 
-#BEGIN { @*INC.unshift: './lib'; }
+BEGIN { @*INC.push('lib'); }
 
 use Test;
 use Netstring;
@@ -19,4 +19,3 @@ is to-netstring($test_buf), $wanted_str, 'to-netstring(Buf)';
 ## This would use 'is', but 'is' with Buf objects is broken at the moment.
 ok to-netstring-buf($test_str) == $wanted_buf, 'to-netstring-buf(Str)';
 ok to-netstring-buf($test_buf) == $wanted_buf, 'to-netstring-buf(Buf)';
-

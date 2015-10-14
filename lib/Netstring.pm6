@@ -1,6 +1,6 @@
 use v6;
 
-module Netstring;
+unit module Netstring;
 
 proto to-netstring ($) is export {*}
 proto to-netstring-buf ($) is export {*}
@@ -52,10 +52,9 @@ sub read-netstring (IO::Socket $in --> Buf) is export
   my $content = $in.read(+$len);
   my $terminator = $in.read(1);
   $terminator.=decode;
-  if $terminator ne ',' 
-  { 
-    die "Missing or invalid netstring terminator: $terminator" 
+  if $terminator ne ','
+  {
+    die "Missing or invalid netstring terminator: $terminator"
   }
   return $content;
 }
-
