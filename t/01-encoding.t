@@ -1,6 +1,6 @@
 use v6;
 
-BEGIN { @*INC.push('lib'); }
+BEGIN { @*INC.unshift('lib'); }
 
 use Test;
 use Netstring;
